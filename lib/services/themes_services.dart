@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 class ThemeServices {
   final _box = GetStorage();
   final _key = 'isDarkMode';
+  _saveThemeToBox(bool isDarkMode) => _box.write(_key, isDarkMode);
 
   //trying to read the value of the key
   bool _loadThemeFromBox() => _box.read(_key) ?? false;
@@ -13,5 +14,7 @@ class ThemeServices {
   ThemeMode get theme => _loadThemeFromBox() ? ThemeMode.dark : ThemeMode.light;
   void switchTheme() {
     Get.changeThemeMode(_loadThemeFromBox() ? ThemeMode.light : ThemeMode.dark);
+
+    _saveThemeToBox(!_loadThemeFromBox());
   }
 }
