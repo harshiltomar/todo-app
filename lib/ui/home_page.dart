@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/services/notification_services.dart';
 import 'package:todo_app/services/themes_services.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,6 +10,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var notifyHelper;
+
+  @override
+  void initState() {
+    super.initState();
+    notifyHelper = NotifyHelper();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,9 +45,8 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       actions: [
-        Icon(
-          Icons.person,
-          size: 20,
+        CircleAvatar(
+          backgroundImage: AssetImage("lib/images/pp.jpg"),
         ),
         SizedBox(
           width: 20,

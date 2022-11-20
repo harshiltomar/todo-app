@@ -29,6 +29,13 @@ Future selectNotification(String? payload) async {
     print("Notification Done");
   }
   Get.to(() => Container(
-        color: Color(0xffffff),
+        color: Color.fromARGB(255, 255, 255, 255),
       ));
+}
+
+Future onDidReceiveLocalNotification(
+    int id, String title, String body, String payload) async {
+  // display a dialog with the notification details, tap ok to go to another page
+
+  Get.dialog(Text("Welcome to Flutter"));
 }
